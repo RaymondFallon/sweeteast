@@ -11,6 +11,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+    <main id="content" class="pt-8" tabindex="-1">
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -7,6 +7,7 @@ class Showtime < ApplicationRecord
             presence: true
 
   scope :upcoming, -> { where('start_datetime > ?', Time.zone.now) }
+  scope :for_date, ->(date) { where(start_datetime: date.beginning_of_day..date.end_of_day) }
 
   def date
     start_datetime.to_date

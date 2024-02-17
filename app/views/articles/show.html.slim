@@ -1,0 +1,6 @@
+
+h1= @article.title
+p= @article.published_at.strftime("%B %e, %Y")
+p= @article.author.name
+
+p.px-8= @article.body

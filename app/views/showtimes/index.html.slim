@@ -1,0 +1,8 @@
+h1 Showtimes
+
+- @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|
+  - if idx != 0
+      hr.my-12
+  h2= date.strftime("%A, %B %e")
+  - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+    = render 'day_at_theater', theater: theater, showtimes: showtimes

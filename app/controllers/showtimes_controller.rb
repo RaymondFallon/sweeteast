@@ -1,5 +1,5 @@
 class ShowtimesController < ApplicationController
   def index
-    @showtimes = Showtime.upcoming.group_by(&:theater)
+    @showtimes = Showtime.order(:start_datetime).includes(:theater).upcoming
   end
 end
