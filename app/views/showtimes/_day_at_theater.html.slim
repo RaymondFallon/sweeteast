@@ -1,6 +1,6 @@
 = link_to theater.name, theater.external_url, class: 'text-2xl'
 
-- showtimes.group_by(&:movie_title).each do |movie_title, showtimes|
+- showtimes.sort_by(&:movie_title).group_by(&:movie_title).each do |movie_title, showtimes|
   h4.m-0= movie_title
   p.pl-2.m-0
     - showtimes.sort_by(&:start_datetime).each do |showtime|

@@ -18,4 +18,19 @@ Theater.where(code: 'smod').first_or_create(name: 'Smodcastle Cinemas',
                                             external_url: 'https://www.smodcastlecinemas.com/',
                                             address: '123 Main St, Red Bank, NJ 07701',
                                             zip_code: '07701')
-
+Theater.where(code: 'barry').first_or_create(name: 'Barrymore Film Center',
+                                             external_url: 'https://www.barrymorefilmcenter.com/',
+                                             address: '209 Monmouth St, Red Bank, NJ 07701',
+                                             zip_code: '07701')
+Theater.where(code: 'clair').first_or_create(name: 'Clairidge',
+                                             external_url: 'https://theclairidge.org/',
+                                             address: '486 Bloomfield Ave, Montclair, NJ 07042',
+                                             zip_code: '07042')
+Theater.where(code: 'showroom').first_or_create(name: 'Showroom Cinemas',
+                                                external_url: 'https://showroomcinemas.com/',
+                                                address: '707 Cookman Ave, Asbury Park, NJ 07712',
+                                                zip_code: '07712')
+Theater.where(code: 'williams').first_or_create(name: 'Williams Center',
+                                                external_url: 'https://www.williamscenter.co/cinema-underground',
+                                                address: '1 Williams Plaza, Rutherford, NJ 07070',
+                                                zip_code: '07070')
