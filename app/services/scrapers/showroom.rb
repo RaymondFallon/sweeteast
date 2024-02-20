@@ -21,7 +21,7 @@ module Scrapers
         else
           (0...title_nodes.size).each do |idx|
             movie_title = title_nodes[idx].css('a h2').text
-            times = time_nodes[idx].css('li a').map { _1.text.strip }
+            times = time_nodes[idx].css('li a').map(&:text)
 
             create_records_for_times(movie_title, date, times)
           end
@@ -32,7 +32,7 @@ module Scrapers
       fetch_html('https://showroomcinemas.com/coming-soon/').css('.show-details').each do |event_node|
         title = event_node.css('h2 a').text
         date = event_node.css('.selected-date span').text
-        times = event_node.css('ol.showtimes li a').map { _1.text.strip }
+        times = event_node.css('ol.showtimes li a').map(&:text)
 
         create_records_for_times(title, date, times)
       end
@@ -42,8 +42,8 @@ module Scrapers
 
     def create_records_for_times(title, date, times)
       times.each do |time|
-        start_datetime = parse_start_datetime(date, time)
-        Showtime.create(theater: theater, movie_title: title, start_datetime: start_datetime)
+        start_datetime = parse_start_datetime(date, time.strip)
+        Showtime.create(theater: theater, movie_title: title.strip, start_datetime: start_datetime)
       end
     end
 
