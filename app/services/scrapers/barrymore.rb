@@ -27,8 +27,8 @@ module Scrapers
 
           Showtime.create!(theater: theater, movie_title: title, start_datetime: parse_start_datetime(date, time))
 
-          # wait 20 seconds to avoid rate limiting. Not practical for production, but while testing...
-          sleep 30
+          # wait some seconds to avoid rate limiting. Not practical for production, but while testing...
+          sleep 5
         end
       end
     end
