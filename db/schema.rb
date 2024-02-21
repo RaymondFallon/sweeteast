@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_15_201244) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_21_213256) do
   create_table "articles", force: :cascade do |t|
     t.integer "author_id"
     t.string "title"
@@ -45,6 +45,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_15_201244) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "\"reset_password_token\"", name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "articles", "authors"
