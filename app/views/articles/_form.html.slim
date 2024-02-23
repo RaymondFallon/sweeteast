@@ -17,9 +17,9 @@
     = form.label :published_at, 'Publish Date', class: 'mr-2'
     = form.date_field :published_at
   .field.mb-2
-    = form.label :body
+    = form.label :content
     .bg-grey-lighter.p-1.rounded.text-black
-      = form.rich_text_area :body
+      = form.rich_text_area :content
 
   .actions
     = form.submit

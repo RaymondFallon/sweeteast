@@ -3,7 +3,7 @@
 class Article < ApplicationRecord
   belongs_to :author
 
-  has_rich_text :body
+  has_rich_text :content
 
   validates :title, :published_at,
             presence: true
