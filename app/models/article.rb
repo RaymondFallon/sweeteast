@@ -2,6 +2,9 @@
 
 class Article < ApplicationRecord
   belongs_to :author
-  
-  validates :title, presence: true
+
+  has_rich_text :body
+
+  validates :title, :published_at,
+            presence: true
 end

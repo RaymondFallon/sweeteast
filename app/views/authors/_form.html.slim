@@ -1,0 +1,19 @@
+
+= form_with model: author, local: true do |form|
+  - if author.errors.any?
+    #error_explanation
+      h2= "#{pluralize(author.errors.count, "error")} prohibited this author from being saved:"
+      ul
+        - author.errors.full_messages.each do |message|
+          li= message
+
+  .field
+    = form.label :name, class: 'mr-2'
+    = form.text_field :name
+  .field.mb-2
+    = form.label :bio
+    .bg-grey-lighter.p-1.rounded.text-black
+      = form.rich_text_area :bio
+
+  .actions
+    = form.submit

@@ -1,0 +1,25 @@
+
+= form_with model: article, local: true do |form|
+  - if article.errors.any?
+    #error_explanation
+      h2= "#{pluralize(article.errors.count, "error")} prohibited this article from being saved:"
+      ul
+        - article.errors.full_messages.each do |message|
+          li= message
+
+  .field
+    = form.label :author_id, 'Author', class: 'mr-2'
+    = form.collection_select :author_id, Author.order(:name), :id, :name, { prompt: 'Select an author' }
+  .field
+    = form.label :title, class: 'mr-2'
+    = form.text_field :title, class: 'w-full'
+  .field
+    = form.label :published_at, 'Publish Date', class: 'mr-2'
+    = form.date_field :published_at
+  .field.mb-2
+    = form.label :body
+    .bg-grey-lighter.p-1.rounded.text-black
+      = form.rich_text_area :body
+
+  .actions
+    = form.submit

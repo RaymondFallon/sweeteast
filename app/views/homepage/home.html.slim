@@ -1,0 +1,16 @@
+h1.sr-only The Sweet East (working title)
+
+div
+  .align-top.w-1/2.inline-block
+    h2 Articles
+    - @articles.each do |article|
+      = link_to article.title, article_path(article)
+      br
+  .align-top.w-1/2.inline-block
+    h2.mb-0 Showtimes
+    .mb-2
+      .inline-block Today
+      span.mx-2 •
+      = link_to 'Upcoming', showtimes_path, class: 'inline-block'
+    - @showtimes.group_by(&:theater).each do |theater, showtimes|
+      = render 'showtimes/day_at_theater', theater: theater, showtimes: showtimes

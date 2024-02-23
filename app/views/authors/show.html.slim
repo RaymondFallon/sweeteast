@@ -1,0 +1,13 @@
+.default-flex-row
+  h1= @author.name
+  - if user_signed_in?
+    = link_to 'Edit', edit_author_path(@author)
+
+p= @author.bio
+
+h2 Articles
+
+ul
+  - @author.articles.each do |article|
+    li= link_to article.title, article_path(article)
+

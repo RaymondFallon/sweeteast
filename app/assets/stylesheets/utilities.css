@@ -5,6 +5,20 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 /*
 .inline-block {
   display: inline-block !important;

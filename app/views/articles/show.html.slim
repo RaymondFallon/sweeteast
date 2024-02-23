@@ -1,6 +1,23 @@
 
-h1= @article.title
-p= @article.published_at.strftime("%B %e, %Y")
-p= @article.author.name
+.default-flex-row
+  h1= @article.title
+  - if user_signed_in?
+    = link_to 'Edit', edit_article_path(@article)
 
-p.px-8= @article.body
+.mb-2
+  span.mr-1 By
+  = link_to @article.author.name, author_path(@article.author)
+
+.mb-4
+  span.mr-1 Published
+  = @article.published_at.strftime("%B %e, %Y")
+
+div.mx-8
+  = @article.body
+
+hr.my-8.text-green
+
+.mb-4
+  span.mr-1 About
+  = link_to @article.author.name, author_path(@article.author)
+div= @article.author.bio

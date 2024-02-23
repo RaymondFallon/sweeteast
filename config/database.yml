@@ -14,4 +14,3 @@ production:
   database: sweeteast_prod
   pool: 5
   timeout: 5000
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
