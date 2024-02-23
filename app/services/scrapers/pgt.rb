@@ -26,7 +26,7 @@ module Scrapers
 
         # Special events, single showtime per day (?)
         movie_html.css('#film-tickets .timeslot').each do |showtime_node|
-          next if showtime_node.css('a.time').text.blank? # Hide some weird hidden elements for "Wed Dec 31"
+          next if showtime_node.css('a.time').text.blank? # Ignore some weird hidden elements for "Wed Dec 31"
 
           date = showtime_node.css('.day').text
           time = showtime_node.css('a.time').text.strip
@@ -38,8 +38,9 @@ module Scrapers
 
     private
 
-    def parse_start_datetime(date, time)
-      DateTime.parse("#{date} #{time} PM")
+    def parse_start_datetime(date, raw_time)
+      time = raw_time.match?(/a/i) ? raw_time : "#{raw_time} PM"
+      Time.zone.parse("#{date} #{time}")
     end
   end
 end

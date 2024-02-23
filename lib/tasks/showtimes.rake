@@ -8,6 +8,6 @@ namespace :showtimes do
     Scrapers::Showroom.new.run
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'montgomery')).run
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'smodcastle')).run
-    Scrapers::Barrymore.new.run
+    # Scrapers::Barrymore.new.run
   end
 end

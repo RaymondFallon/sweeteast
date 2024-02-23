@@ -35,7 +35,7 @@ module Scrapers
     def parse_start_datetime(date, time)
       # Add a space before 'p' and 'a' to make the time parsing work
       time = time.gsub('p', ' PM').gsub('a', ' AM')
-      DateTime.parse("#{date} #{time}")
+      Time.zone.parse("#{date} #{time}")
     end
   end
 end

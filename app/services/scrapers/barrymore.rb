@@ -36,7 +36,7 @@ module Scrapers
     private
 
     def parse_start_datetime(date, time)
-      DateTime.parse("#{date} #{time}")
+      Time.zone.parse("#{date} #{time}")
     end
   end
 end
