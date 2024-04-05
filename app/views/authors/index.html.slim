@@ -1,0 +1,8 @@
+div
+  .align-top
+    - if user_signed_in?
+      div= link_to 'New Author', new_author_path
+    h2 Authors
+    - @authors.each do |author|
+      = link_to author.name, author_path(author)
+      br

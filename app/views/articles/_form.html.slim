@@ -20,6 +20,9 @@
     = form.label :content
     .bg-grey-lighter.p-1.rounded.text-black
       = form.rich_text_area :content
+  .field.mb-2
+    = form.label :preview_text, class: 'mr-2'
+    = form.text_area :preview_text, class: 'w-full'
 
   .actions
     = form.submit

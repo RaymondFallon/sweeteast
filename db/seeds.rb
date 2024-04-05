@@ -20,7 +20,6 @@
   Theater.where(code: code).first_or_create(name: name, external_url: url, address: address, zip_code: zip_code)
 end
 
-ray = Author.where(name: 'Ray Fallon').first_or_create
+ray = Author.where(name: 'Ray Fallon', bio: 'developed this website').first_or_create
 Article.where(author: ray).first_or_create(title: 'Coming Soon',
-                                           body: 'This website is in progress!',
                                            published_at: 1.day.ago)

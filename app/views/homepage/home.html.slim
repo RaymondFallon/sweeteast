@@ -4,9 +4,11 @@ div
   .align-top.w-1/2.inline-block
     h2.mb-1 Articles
     = render 'articles/latest', article: @articles.first
-    - @articles.each do |article|
-      = link_to article.title, article_path(article)
-      br
+    .ml-6
+      .mb-4= link_to '> View more articles', articles_path
+      - @articles.each do |article|
+        = link_to article.title, article_path(article)
+        br
   .align-top.w-1/2.inline-block
     h2.mb-0 Showtimes
     .mb-2

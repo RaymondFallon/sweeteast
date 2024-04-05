@@ -4,8 +4,7 @@ class AuthorsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
 
   def index
-    @authors = Author.all
-    @showtimes = Showtime.for_date(Time.zone.today)
+    @authors = Author.order(:name)
   end
 
   def show
