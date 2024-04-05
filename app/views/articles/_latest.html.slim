@@ -1,0 +1,8 @@
+-# Partial Variables:
+-#   - article: Article
+
+.article-preview.mb-8.mr-8
+  div= link_to article.title, article_path(article), class: 'text-2xl'
+  .italic= article.author.name
+  .italic.mb-4= article.published_at.strftime("%B %e, %Y")
+  div= article.preview

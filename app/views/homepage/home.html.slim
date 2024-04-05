@@ -2,7 +2,8 @@ h1.sr-only Garden State Lantern
 
 div
   .align-top.w-1/2.inline-block
-    h2 Articles
+    h2.mb-1 Articles
+    = render 'articles/latest', article: @articles.first
     - @articles.each do |article|
       = link_to article.title, article_path(article)
       br
