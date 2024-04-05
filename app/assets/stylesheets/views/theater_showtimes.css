@@ -9,10 +9,18 @@
   order: 1;
 }
 
-.theater-showtimes.hidden-section {
+.theater-showtimes.hidden-by-user {
   order: 2;
 }
 
-.theater-showtimes.hidden-section .showtimes {
+.theater-showtimes.hidden-by-user .showtimes {
   display: none;
+}
+
+.theater-showtimes.hidden-by-user .theater-name {
+  color: rgb(71, 138, 71);
+}
+
+.theater-showtimes.hidden-by-user .theater-name:hover {
+  color: rgb(80, 179, 80);
 }

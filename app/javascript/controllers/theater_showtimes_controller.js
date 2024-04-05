@@ -22,7 +22,7 @@ export default class extends Controller {
   // Private
 
   setVisibility() {
-    this.element.classList.toggle('hidden-section', this.isHiddenValue)
+    this.element.classList.toggle('hidden-by-user', this.isHiddenValue)
     this.buttonTarget.textContent = this.isHiddenValue ? 'Show' : 'Hide'
   }
 }
