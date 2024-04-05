@@ -1,0 +1,18 @@
+.all-theater-showtimes {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+  width: 50%;
+}
+
+.theater-showtimes {
+  order: 1;
+}
+
+.theater-showtimes.hidden-section {
+  order: 2;
+}
+
+.theater-showtimes.hidden-section .showtimes {
+  display: none;
+}
