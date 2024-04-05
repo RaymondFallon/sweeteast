@@ -85,6 +85,8 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.3)
     crass (1.0.6)
+    cssbundling-rails (1.4.0)
+      railties (>= 6.0.0)
     date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -265,11 +267,13 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
+  cssbundling-rails (~> 1.4)
   debug
   devise
   factory_bot_rails
