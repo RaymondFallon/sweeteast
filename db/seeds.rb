@@ -16,7 +16,8 @@
  ['williams', 'Williams Center', 'https://www.williamscenter.co/cinema-underground',
          '1 Williams Plaza, Rutherford, NJ 07070', '07070'],
  ['montgomery', 'Montgomery Cinemas', 'https://www.montgomerycinemas.com/',
-         '1325 US-206, Skillman, NJ 08558', '08558']].each do |code, name, url, address, zip_code|
+         '1325 US-206, Skillman, NJ 08558', '08558']
+].each do |code, name, url, address, zip_code|
   Theater.where(code: code).first_or_create(name: name, external_url: url, address: address, zip_code: zip_code)
 end
 
