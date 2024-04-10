@@ -20,5 +20,12 @@ module Scrapers
     def fetch_html(url)
       Nokogiri::HTML(URI.open(url))
     end
+
+    def create_records_for_times(title, date, times)
+      times.each do |time|
+        start_datetime = parse_start_datetime(date, time.strip)
+        Showtime.create(theater: theater, movie_title: title.strip, start_datetime: start_datetime)
+      end
+    end
   end
 end

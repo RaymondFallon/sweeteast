@@ -25,13 +25,6 @@ module Scrapers
 
     private
 
-    def create_records_for_times(title, date, times)
-      times.each do |time|
-        start_datetime = parse_start_datetime(date, time.strip)
-        Showtime.create(theater: theater, movie_title: title.strip, start_datetime: start_datetime)
-      end
-    end
-
     def parse_start_datetime(date, time)
       # Add a space before 'p' and 'a' to make the time parsing work
       time = time.gsub('p', ' PM').gsub('a', ' AM')

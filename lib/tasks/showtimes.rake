@@ -10,5 +10,6 @@ namespace :showtimes do
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'smodcastle')).run
     Scrapers::Williams.new.run
     Scrapers::Barrymore.new.run
+    Scrapers::Clairidge.new.run
   end
 end
