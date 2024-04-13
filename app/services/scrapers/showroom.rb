@@ -20,10 +20,10 @@ module Scrapers
           next
         else
           (0...title_nodes.size).each do |idx|
-            movie_title = title_nodes[idx].css('a h2').text
+            raw_title = title_nodes[idx].css('a h2').text
             times = time_nodes[idx].css('li a').map(&:text)
 
-            create_records_for_times(movie_title, date, times)
+            create_records_for_times(raw_title, date, times)
           end
         end
       end

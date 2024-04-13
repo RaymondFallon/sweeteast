@@ -9,10 +9,10 @@ module Scrapers
     def scrape_showtimes
       movies = JSON.parse(fetch_html('https://www.viewcy.com/api/o/cinemaunderground/courses'))['data']
       movies.each do |movie_hash|
-        movie_title = movie_hash['name']
+        raw_title = movie_hash['name']
         movie_hash['events'].each do |showtime_hash|
           start_datetime = Time.zone.parse(showtime_hash['starts_at'])
-          Showtime.create!(theater: theater, movie_title: movie_title, start_datetime: start_datetime)
+          Showtime.create!(theater: theater, raw_title: raw_title, start_datetime: start_datetime)
         end
       end
     end

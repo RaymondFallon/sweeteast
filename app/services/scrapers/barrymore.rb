@@ -18,14 +18,14 @@ module Scrapers
         body.each do |event|
           title = event['title']
           # datetime = Time.at((event['startDate'] / 1000) - 5.hours)
-          # Showtime.create!(theater: theater, movie_title: title, start_datetime: datetime)
+          # Showtime.create!(theater: theater, raw_title: title, start_datetime: datetime)
 
           event_url = URI.join(url, event['urlId'])
           event_html = fetch_html(event_url)
           date = event_html.css('time.event-date').first.text
           time = event_html.css('time.event-time-12hr-start').first.text
 
-          Showtime.create!(theater: theater, movie_title: title, start_datetime: parse_start_datetime(date, time))
+          Showtime.create!(theater: theater, raw_title: title, start_datetime: parse_start_datetime(date, time))
 
           # wait some seconds to avoid rate limiting. Not practical for production, but while testing...
           sleep 5

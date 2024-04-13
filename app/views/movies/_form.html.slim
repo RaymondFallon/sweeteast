@@ -1,0 +1,27 @@
+
+= form_with model: movie, local: true do |form|
+  - if movie.errors.any?
+    #error_explanation
+      h2= "#{pluralize(movie.errors.count, "error")} prohibited this movie from being saved:"
+      ul
+        - movie.errors.full_messages.each do |message|
+          li= message
+
+  .field
+    = form.label :title, 'Movie Title', class: 'mr-2'
+    = form.text_field :title
+  - if movie.persisted? && movie.aliases.any?
+    .mt-8
+      span.font-semibold Aliases
+      span= ' (used for web scraping)'
+    - movie.aliases.each do |aliass|
+      .field
+        = aliass.text
+        = link_to 'Delete', aliass, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2'
+  .mt-8= form.fields_for :aliases, MovieAlias.new(movie: movie) do |alias_form|
+    .field
+      = alias_form.label :text, 'New Alias', class: 'mr-2'
+      = alias_form.text_field :text
+
+  .actions
+    = form.submit

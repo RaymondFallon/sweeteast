@@ -9,7 +9,9 @@ namespace :showtimes do
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'montgomery')).run
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'smodcastle')).run
     Scrapers::Williams.new.run
-    Scrapers::Barrymore.new.run
     Scrapers::Clairidge.new.run
+
+    # Run last since it's most likely to fail (with a 429). Better still would be to handle the 429 gracefully.
+    Scrapers::Barrymore.new.run
   end
 end

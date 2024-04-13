@@ -1,0 +1,20 @@
+
+.default-flex-row
+  h1= @movie.title
+  - if user_signed_in?
+    = link_to 'Edit', edit_movie_path(@movie)
+
+h2.sr-only
+
+ul
+  - @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|
+    .flex.flex-col
+      - if idx != 0
+          hr.my-12
+      h2= date.strftime("%A, %B %e")
+      - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+        .mb-0= link_to theater.name, theater.external_url
+        .flex
+          - showtimes.sort_by(&:start_datetime).each do |showtime|
+            .inline-block.mx-2= showtime.start_datetime.strftime("%l:%M %p")
+

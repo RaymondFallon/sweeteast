@@ -8,7 +8,7 @@ module Scrapers
 
     def scrape_showtimes
       fetch_html(url).css('#box-times').each do |showtime_node|
-        movie_title = showtime_node.css('a.title').text
+        raw_title = showtime_node.css('a.title').text
         movie_path = showtime_node.css('a.title').attribute('href').value
         movie_url = URI.join(url, movie_path).to_s
 
@@ -20,7 +20,7 @@ module Scrapers
           times = showtime_node.css('.session-times li a').map { _1.text.strip }
           times.each do |time|
             start_datetime = parse_start_datetime(date, time)
-            Showtime.create!(theater: theater, movie_title: movie_title, start_datetime: start_datetime)
+            Showtime.create!(theater: theater, raw_title: raw_title, start_datetime: start_datetime)
           end
         end
 
@@ -31,7 +31,7 @@ module Scrapers
           date = showtime_node.css('.day').text
           time = showtime_node.css('a.time').text.strip
           start_datetime = parse_start_datetime(date, time)
-          Showtime.create!(theater: theater, movie_title: movie_title, start_datetime: start_datetime)
+          Showtime.create!(theater: theater, raw_title: raw_title, start_datetime: start_datetime)
         end
       end
     end
