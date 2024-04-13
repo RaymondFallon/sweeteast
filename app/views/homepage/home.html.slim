@@ -5,7 +5,8 @@ div
     h2.mb-1 Articles
     = render 'articles/latest', article: @articles.first
     .ml-6
-      .mb-4= link_to '> View more articles', articles_path
+      - if Article.count > 5
+        .mb-4= link_to '> View more articles', articles_path
       - @articles.each do |article|
         = link_to article.title, article_path(article)
         br
