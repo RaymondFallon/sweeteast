@@ -6,11 +6,12 @@ div
     .ml-6
       - @articles[1..].each do |article|
         = link_to article.title, article_path(article)
+        span.ml-2 by #{article.author.name}
         br
       - if Article.count > 5
-        .mt-4= link_to '> View more articles', articles_path
+        .my-4= link_to 'View more articles', articles_path
   .align-top.sm:w-1/2.inline-block
-    h2.mb-1 Now Playing in NJ
+    h2.mb-1.-mt-2 Now Playing in NJ
     - @movies_today.each do |movie|
       = link_to movie.title, movie_path(movie)
       br
@@ -18,3 +19,5 @@ div
     - @movies_later.each do |movie|
       = link_to movie.title, movie_path(movie)
       br
+    .my-4
+      = link_to 'Showtimes', showtimes_path, class: 'text-xl'
