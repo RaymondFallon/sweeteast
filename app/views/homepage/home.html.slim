@@ -1,16 +1,15 @@
 h1.sr-only Garden State Lantern
 
 div
-  .align-top.w-1/2.inline-block
-    h2.mb-1 Articles
+  .align-top.sm:w-1/2.inline-block
     = render 'articles/latest', article: @articles.first
     .ml-6
-      - if Article.count > 5
-        .mb-4= link_to '> View more articles', articles_path
-      - @articles.each do |article|
+      - @articles[1..].each do |article|
         = link_to article.title, article_path(article)
         br
-  .align-top.w-1/2.inline-block
+      - if Article.count > 5
+        .mt-4= link_to '> View more articles', articles_path
+  .align-top.sm:w-1/2.inline-block
     h2.mb-1 Now Playing in NJ
     - @movies_today.each do |movie|
       = link_to movie.title, movie_path(movie)
