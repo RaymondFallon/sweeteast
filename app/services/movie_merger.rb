@@ -13,7 +13,7 @@ class MovieMerger
     Movie.transaction do
       merge_aliases
       merge_showtimes
-      @movie2.destroy
+      @movie2.reload.destroy
     end
   end
 
@@ -25,10 +25,8 @@ class MovieMerger
 
   def merge_showtimes
     @movie2.showtimes.each do |showtime|
-      showtime.assign_attributes(movie_id: @movie1.id)
-
-      # If showtime is invalid, we probably already have a showtime for movie1 and if not, c'est la vie.
-      showtime.save || showtime.destroy
+      showtime.movie = @movie1
+      showtime.save
     end
   end
 end
