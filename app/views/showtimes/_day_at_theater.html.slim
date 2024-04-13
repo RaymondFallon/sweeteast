@@ -8,8 +8,10 @@
       data-action="theater-showtimes#toggle"
       data-theater-showtimes-target="button"] Hide
   .showtimes
-    - showtimes.sort_by(&:movie_title).group_by(&:movie_title).each do |movie_title, showtimes|
-      h4.m-0= movie_title
+    - showtimes.sort_by(&:raw_title).group_by(&:raw_title).each do |raw_title, showtimes|
+      - movie = showtimes.first.movie
+      .m-0
+        = link_to movie.title, movie
       p.pl-2.m-0
         - showtimes.sort_by(&:start_datetime).each do |showtime|
           .inline-block.mx-2= showtime.start_datetime.strftime("%l:%M %p")

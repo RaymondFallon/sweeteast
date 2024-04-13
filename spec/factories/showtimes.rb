@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :showtime do
     association :theater
 
-    movie_title { Faker::Movie.title }
+    raw_title { Faker::Movie.title }
     start_datetime { Faker::Time.between(from: 1.day.ago, to: 2.days.from_now) }
     external_url { Faker::Internet.url }
 
@@ -16,7 +16,7 @@ FactoryBot.define do
 
     trait :for_existing_theater_and_movie do
       theater { Theater.all.sample }
-      movie_title { theater.showtimes.sample.movie_title }
+      raw_title { theater.showtimes.sample.raw_title }
     end
   end
 end

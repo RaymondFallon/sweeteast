@@ -1,0 +1,17 @@
+
+h1 Edit #{@movie.title}
+
+= render 'form', movie: @movie
+
+h2 Merge Movies Records
+.italic.mb-4
+  'If there is a duplicate of this movie in the system, select it below and and hit "Merge."
+  'All aliases and showtimes will be combined into one movie record.
+
+= form_with url: movie_merger_path, method: :patch do |form|
+  = form.hidden_field :movie1_id, value: @movie.id
+  .field
+    = form.label :movie2_id, 'Duplicate Movie', class: 'mr-2'
+    = form.select :movie2_id, Movie.where.not(id: @movie.id).map { [_1.title, _1.id] }, include_blank: 'Select a movie...'
+  .actions
+    = form.submit 'Merge'

@@ -9,6 +9,9 @@ module Scrapers
       p "Scraping showtimes for #{theater.name}..."
       scrape_showtimes
       p "Finished scraping showtimes for #{theater.name}."
+
+    rescue StandardError => e
+      p "Error scraping showtimes for #{theater.name}: #{e.message}"
     end
 
     def scrape_showtimes
@@ -24,7 +27,7 @@ module Scrapers
     def create_records_for_times(title, date, times)
       times.each do |time|
         start_datetime = parse_start_datetime(date, time.strip)
-        Showtime.create(theater: theater, movie_title: title.strip, start_datetime: start_datetime)
+        Showtime.create(theater: theater, raw_title: title.strip, start_datetime: start_datetime)
       end
     end
   end

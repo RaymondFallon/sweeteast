@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthorsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @authors = Author.order(:name)
