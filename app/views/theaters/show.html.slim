@@ -1,0 +1,20 @@
+
+h1.mb-2= @theater.name
+p
+  div= link_to 'Theater website', @theater.external_url, target: '_blank'
+  div= @theater.address
+
+p
+  ' Always assume that GSL contains incorrect/incomplete showtime information.
+  ' Each theater's own website should be considered the most reliable source for showtimes.
+
+
+h2 Showtimes:
+- @showtimes.group_by(&:movie).each do |movie, showtimes|
+  .m-0
+    = link_to movie.title, movie
+  p.pl-2.m-0
+    - showtimes.sort_by(&:start_datetime).each do |showtime|
+      .inline-block.mx-2= showtime.start_datetime.strftime("%l:%M %p")
+
+

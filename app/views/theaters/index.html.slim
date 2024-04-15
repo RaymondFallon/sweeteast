@@ -1,0 +1,11 @@
+h1 Theaters
+
+p
+  ' Always assume that GSL contains incorrect/incomplete showtime information.
+  ' Each theater's own website should be considered the most reliable source for showtimes.
+ul
+  - @theaters.each do |theater|
+    li
+      = link_to theater.name, theater_path(theater), class: 'mr-1'
+      span.ml-2
+        = theater.address

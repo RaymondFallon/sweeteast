@@ -6,4 +6,6 @@ class HomepageController < ApplicationController
     @movies_today = Movie.for_date(Time.zone.today)
     @movies_later = Movie.this_week - @movies_today
   end
+
+  def about; end
 end
