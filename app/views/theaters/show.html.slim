@@ -9,7 +9,7 @@ p
   ' Each theater's own website should be considered the most reliable source for showtimes.
 
 
-h2 Showtimes:
+h2 Today's Showtimes:
 - @showtimes.group_by(&:movie).each do |movie, showtimes|
   .m-0
     = link_to movie.title, movie
