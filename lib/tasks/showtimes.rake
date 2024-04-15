@@ -14,4 +14,13 @@ namespace :showtimes do
     # Run last since it's most likely to fail (with a 429). Better still would be to handle the 429 gracefully.
     Scrapers::Barrymore.new.run
   end
+
+  desc 'Test scrape one theater'
+  task test_scrape: %i[environment] do
+    return unless Rails.env.development?
+
+    # theater = Theater.find_by(code: 'delsea')
+    # theater.showtimes.delete_all
+    # Scrapers::Delsea.new.run
+  end
 end
