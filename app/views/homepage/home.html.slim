@@ -1,7 +1,7 @@
 h1.sr-only Garden State Lantern
 
 div
-  .align-top.sm:w-1/2.inline-block
+  .align-top.sm:w-1/2.inline-block.mb-8
     = render 'articles/latest', article: @articles.first
     .ml-6
       - @articles[1..].each do |article|
