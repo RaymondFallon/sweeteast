@@ -9,3 +9,6 @@ ul
       = link_to theater.name, theater_path(theater), class: 'mr-1'
       span.ml-2
         = theater.address
+      = link_to theater.external_url, target: '_blank', class: 'ml-2' do
+        'Theater website
+        = fa_icon 'arrow-up-right-from-square', class: 'ml-1 text-sm'

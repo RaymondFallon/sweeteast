@@ -13,7 +13,14 @@ ul
           hr.my-12
       h2= date.strftime("%A, %B %e")
       - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
-        .mb-0= link_to theater.name, theater.external_url, target: '_blank'
+        .mb-0
+          div
+            = link_to theater.name, theater_path(theater)
+            span.ml-2= '('
+            = link_to theater.external_url, target: '_blank' do
+              = fa_icon 'arrow-up-right-from-square', class: 'text-sm'
+              .sr-only External site
+            = ')'
         .flex
           - showtimes.sort_by(&:start_datetime).each do |showtime|
             .inline-block.mx-2= showtime.start_datetime.strftime("%l:%M %p")

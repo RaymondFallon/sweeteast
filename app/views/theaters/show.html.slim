@@ -1,7 +1,10 @@
 
 h1.mb-2= @theater.name
 p
-  div= link_to 'Theater website', @theater.external_url, target: '_blank'
+  div
+    = link_to @theater.external_url, target: '_blank' do
+      'Theater website
+      = fa_icon 'arrow-up-right-from-square', class: 'ml-1 text-sm'
   div= @theater.address
 
 p
