@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   validates :title,
             presence: true
 
-  accepts_nested_attributes_for :aliases #, reject_if: :all_blank
+  accepts_nested_attributes_for :aliases, reject_if: :all_blank
 
   default_scope { order(:title) }
   scope :this_week, -> { joins(:showtimes).merge(Showtime.this_week).distinct }

@@ -1,4 +1,8 @@
 body {
+  --neon-green: rgb(60, 244, 60);
+  --neon-orange: rgb(244, 143, 60);
+  --neon-green-dark: rgb(34, 198, 34);
+
   background-color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -8,18 +12,18 @@ body {
   min-height: 100vh;
 
   a {
-    color: rgb(60, 244, 60);;
+    color: var(--neon-green) !important;
     text-decoration: none;
 
     &:hover {
-      color: rgb(34, 198, 34);
+      color: var(--neon-green-dark) !important;
     }
 
     &:visited {
-      color: rgb(34, 198, 34);
+      color: var(--neon-green) !important;
 
       &:hover {
-        color: rgb(60, 244, 60);
+        color: var(--neon-green-dark) !important;
       }
     }
   }
@@ -27,9 +31,9 @@ body {
 
 main {
   padding: 2rem;
-  border-left: 14px solid rgb(244, 143, 60);
-  border-right: 14px solid rgb(60, 244, 60);
-  min-height: 95vh;
+  border-left: 14px solid var(--neon-orange);
+  border-right: 14px solid var(--neon-green);
+  min-height: 94vh;
 }
 
 #navbar {
@@ -39,14 +43,14 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: .25rem 16px;
-  background-image: linear-gradient(to right, rgb(244, 143, 60), rgb(60, 244, 60));
+  background-image: linear-gradient(to right, var(--neon-orange), var(--neon-green));
   color: #333;
 
   a {
-    color: #333;
+    color: #333 !important;
 
     &:hover {
-      color: rgb(60, 244, 60);
+      color: var(--neon-green) !important;
     }
   }
 }

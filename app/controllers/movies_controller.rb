@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
       flash[:notice] = "Success"
       redirect_to edit_movie_path(@movie)
     else
-      flash[:error] = "Error"
+      flash.now[:error] = "Error"
       render :edit
     end
   end
