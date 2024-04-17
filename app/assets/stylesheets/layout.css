@@ -14,17 +14,37 @@ body {
   a {
     color: var(--neon-green) !important;
     text-decoration: none;
+  }
 
-    &:hover {
+  a:hover {
+    color: var(--neon-green-dark) !important;
+  }
+
+  a:visited {
+    color: var(--neon-green) !important;
+  }
+
+  a:visited:hover {
+    color: var(--neon-green-dark) !important;
+  }
+
+  /* WebKit prefix */
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    a {
+      color: var(--neon-green) !important;
+      text-decoration: none;
+    }
+
+    a:hover {
       color: var(--neon-green-dark) !important;
     }
 
-    &:visited {
+    a:visited {
       color: var(--neon-green) !important;
+    }
 
-      &:hover {
-        color: var(--neon-green-dark) !important;
-      }
+    a:visited:hover {
+      color: var(--neon-green-dark) !important;
     }
   }
 }
@@ -48,9 +68,9 @@ main {
 
   a {
     color: #333 !important;
+  }
 
-    &:hover {
-      color: var(--neon-green) !important;
-    }
+  a:hover {
+    color: var(--neon-green) !important;
   }
 }
