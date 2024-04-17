@@ -28,24 +28,37 @@ body {
     color: var(--neon-green-dark) !important;
   }
 
-  /* WebKit prefix */
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    a {
-      color: var(--neon-green) !important;
-      text-decoration: none;
-    }
+  /* set webkit-any-link to fix iphone colors */
+  a:link {
+    color: var(--neon-green) !important;
+  }
 
-    a:hover {
-      color: var(--neon-green-dark) !important;
-    }
+  a:link:hover {
+    color: var(--neon-green-dark) !important;
+  }
 
-    a:visited {
-      color: var(--neon-green) !important;
-    }
+  a:active {
+    color: var(--neon-green) !important;
+  }
 
-    a:visited:hover {
-      color: var(--neon-green-dark) !important;
-    }
+  a:active:hover {
+    color: var(--neon-green-dark) !important;
+  }
+
+  a:-webkit-any-link {
+    color: var(--neon-green) !important;
+  }
+
+  a:-webkit-any-link:hover {
+    color: var(--neon-green-dark) !important;
+  }
+
+  a:-webkit-any-link:visited {
+    color: var(--neon-green) !important;
+  }
+
+  a:-webkit-any-link:visited:hover {
+    color: var(--neon-green-dark) !important;
   }
 }
 
