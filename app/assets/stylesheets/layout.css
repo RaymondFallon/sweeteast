@@ -16,6 +16,11 @@ body {
     text-decoration: none;
   }
 
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
+
   a:hover {
     color: var(--neon-green-dark) !important;
   }
