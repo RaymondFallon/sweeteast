@@ -3,7 +3,7 @@
 namespace :showtimes do
   desc 'Scrape showtimes from the web'
   task scrape: %i[environment] do
-    Showtime.delete_all
+    Showtime.scraped.delete_all
     Scrapers::Pgt.new.run
     Scrapers::Showroom.new.run
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'montgomery')).run
@@ -20,7 +20,7 @@ namespace :showtimes do
     return unless Rails.env.development?
 
     # theater = Theater.find_by(code: 'delsea')
-    # theater.showtimes.delete_all
+    # theater.showtimes.scraped.delete_all
     # Scrapers::Delsea.new.run
   end
 end

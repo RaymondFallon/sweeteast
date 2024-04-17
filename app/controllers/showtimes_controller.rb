@@ -9,6 +9,7 @@ class ShowtimesController < ApplicationController
 
   def create
     @showtime = Showtime.new(showtime_params)
+    @showtime.manually_added = true
     @showtime.save
   end
 
