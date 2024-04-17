@@ -1,17 +1,39 @@
 
-h1 Edit #{@movie.title}
+h1= @movie.title
 
-= render 'form', movie: @movie
+.mb-8
+  - if @movie.persisted? && @movie.aliases.any?
+    .mt-2
+      h2.mb-0.inline-block Aliases
+      span= ' (for web scraping)'
+    ul.mt-0
+      - @movie.aliases.each do |aliass|
+        li
+          = aliass.text
+          = link_to 'Delete', aliass, method: :delete, data: { confirm: 'Delete this alias?' }, class: 'ml-2'
 
-h2 Merge Movies Records
-.italic.mb-4
-  'If there is a duplicate of this movie in the system, select it below and and hit "Merge."
-  'All aliases and showtimes will be combined into one movie record.
+.flex.align-items-top.justify-content-between.flex-wrap
+  .md:w-1/4
+    h2 Edit Movie
+    = render 'form', movie: @movie
 
-= form_with url: movie_merger_path, method: :patch do |form|
-  = form.hidden_field :movie1_id, value: @movie.id
-  .field
-    = form.label :movie2_id, 'Duplicate Movie', class: 'mr-2'
-    = form.select :movie2_id, Movie.where.not(id: @movie.id).map { [_1.title, _1.id] }, include_blank: 'Select a movie...'
-  .actions
-    = form.submit 'Merge'
+  .md:w-1/3.mr-4
+    h2 Merge Movies Records
+    .italic.mb-4
+      'If there is a duplicate of this movie in the system, select it below and and hit "Merge."
+      'All aliases and showtimes will be combined into one movie record.
+
+    = form_with url: movie_merger_path, method: :patch do |form|
+      = form.hidden_field :movie1_id, value: @movie.id
+      .field
+        = form.label :movie2_id, 'Duplicate Movie', class: 'mr-2'
+        = form.select :movie2_id, Movie.where.not(id: @movie.id).map { [_1.title, _1.id] }, include_blank: 'Select a movie...'
+      .actions
+        = form.submit 'Merge'
+
+  .md:w-1/3
+    h2 Add Showtimes
+    #showtime-form
+      = render 'showtimes/form', showtime: Showtime.new(movie_id: @movie.id)
+    #added-showtimes
+

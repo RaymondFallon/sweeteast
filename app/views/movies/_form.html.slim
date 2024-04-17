@@ -6,19 +6,10 @@
       ul
         - movie.errors.full_messages.each do |message|
           li= message
-
   .field
-    = form.label :title, 'Movie Title', class: 'mr-2'
+    = form.label :title, class: 'mr-2'
     = form.text_field :title
-  - if movie.persisted? && movie.aliases.any?
-    .mt-8
-      span.font-semibold Aliases
-      span= ' (used for web scraping)'
-    - movie.aliases.each do |aliass|
-      .field
-        = aliass.text
-        = link_to 'Delete', aliass, method: :delete, data: { confirm: 'Delete this alias?' }, class: 'ml-2'
-  .mt-8= form.fields_for :aliases, MovieAlias.new(movie: movie) do |alias_form|
+  .mt-1= form.fields_for :aliases, MovieAlias.new(movie: movie) do |alias_form|
     .field
       = alias_form.label :text, 'New Alias', class: 'mr-2'
       = alias_form.text_field :text

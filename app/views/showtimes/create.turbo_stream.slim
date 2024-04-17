@@ -1,0 +1,3 @@
+
+- if @showtime.persisted?
+  = turbo_stream.append 'added-showtimes', partial: 'showtimes/just_added', locals: { showtime: @showtime }

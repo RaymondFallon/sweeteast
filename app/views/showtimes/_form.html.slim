@@ -1,0 +1,11 @@
+
+= form_with url: showtimes_path, model: showtime, method: :post do |form|
+  = form.hidden_field :movie_id, value: showtime.movie_id
+  .field
+    = form.label :theater_id, 'Theater', class: 'mr-2'
+    = form.select :theater_id, Theater.all.map { [_1.name, _1.id] }, include_blank: 'Select a theater...'
+  .field
+    = form.label :start_datetime, 'Showtime', class: 'mr-2'
+    = form.datetime_local_field :start_datetime
+  .actions
+    = form.submit 'Add Showtime'

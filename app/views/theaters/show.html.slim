@@ -19,5 +19,6 @@ h2 Today's Showtimes:
   p.pl-2.m-0
     - showtimes.sort_by(&:start_datetime).each do |showtime|
       .inline-block.mx-2= showtime.start_datetime.strftime("%l:%M %p")
+      = render showtime
 
 

@@ -12,6 +12,22 @@ class MoviesController < ApplicationController
     @showtimes = @movie.showtimes.upcoming.includes(:theater)
   end
 
+  def new
+    @movie = Movie.new
+    @movie.aliases.build
+  end
+
+  def create
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      flash[:notice] = "Success"
+      redirect_to edit_movie_path(@movie)
+    else
+      flash.now[:error] = "Error"
+      render :new
+    end
+  end
+
   def edit
     @movie = Movie.find(params[:id])
   end
