@@ -12,4 +12,4 @@
         = link_to movie.title, movie
       p.pl-2.m-0
         - showtimes.sort_by(&:start_datetime).each do |showtime|
-          .inline-block.mx-2= render showtime
+          .mx-1= render showtime

@@ -6,7 +6,7 @@
 
 h2.sr-only
 
-ul
+ul.pl-4
   - @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|
     - if idx != 0
         hr.my-12
@@ -15,6 +15,6 @@ ul
       - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
         .mb-0
           = link_to theater.name, theater.external_url, target: '_blank'
-        .flex
+        .flex.flex-wrap
           - showtimes.sort_by(&:start_datetime).each do |showtime|
-            .inline-block.mx-2= render showtime
+            .mx-1= render showtime

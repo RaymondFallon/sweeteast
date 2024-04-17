@@ -37,10 +37,16 @@ body {
 }
 
 main {
-  padding: 2rem;
+  padding: 0.5rem;
   border-left: 14px solid var(--theme-color-left);
   border-right: 14px solid var(--theme-color-right);
   min-height: 94vh;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 2rem;
+  }
 }
 
 #navbar {

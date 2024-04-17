@@ -1,5 +1,5 @@
 
-.flex.mx-2
+.flex.whitespace-nowrap.mx-2
   = showtime.time_of_day
   - if user_signed_in?
     = button_to showtime_path(showtime), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn ml-1 text-sm' do
