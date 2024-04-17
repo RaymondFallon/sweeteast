@@ -1,76 +1,45 @@
 body {
-  --neon-green: rgb(60, 244, 60);
-  --neon-orange: rgb(244, 143, 60);
-  --neon-green-dark: rgb(34, 198, 34);
+  --link-color: blue;
+  --link-color-dark: rgb(1, 1, 179);
+  --theme-color-left: #FFC470;
+  --theme-color-right: #dd8246;
+  --bg-color: #fff5e8;
+  --default-text-color: rgb(75, 75, 75);
 
-  background-color: #333;
+  background-color: var(--bg-color);
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
+  color: var(--default-text-color);
   margin: 0;
   min-height: 100vh;
 
   a {
-    color: var(--neon-green) !important;
+    color: var(--link-color) !important;
     text-decoration: none;
   }
 
-  a:not([class]) {
-    text-decoration-skip-ink: auto;
-    color: currentColor;
-  }
-
   a:hover {
-    color: var(--neon-green-dark) !important;
+    color: var(--link-color-dark) !important;
   }
 
   a:visited {
-    color: var(--neon-green) !important;
+    color: var(--link-color) !important;
   }
 
   a:visited:hover {
-    color: var(--neon-green-dark) !important;
+    color: var(--link-color-dark) !important;
   }
 
-  /* set webkit-any-link to fix iphone colors */
   a:link {
-    color: var(--neon-green) !important;
-  }
-
-  a:link:hover {
-    color: var(--neon-green-dark) !important;
-  }
-
-  a:active {
-    color: var(--neon-green) !important;
-  }
-
-  a:active:hover {
-    color: var(--neon-green-dark) !important;
-  }
-
-  a:-webkit-any-link {
-    color: var(--neon-green) !important;
-  }
-
-  a:-webkit-any-link:hover {
-    color: var(--neon-green-dark) !important;
-  }
-
-  a:-webkit-any-link:visited {
-    color: var(--neon-green) !important;
-  }
-
-  a:-webkit-any-link:visited:hover {
-    color: var(--neon-green-dark) !important;
+    color: var(--link-color) !important;
   }
 }
 
 main {
   padding: 2rem;
-  border-left: 14px solid var(--neon-orange);
-  border-right: 14px solid var(--neon-green);
+  border-left: 14px solid var(--theme-color-left);
+  border-right: 14px solid var(--theme-color-right);
   min-height: 94vh;
 }
 
@@ -81,7 +50,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: .25rem 16px;
-  background-image: linear-gradient(to right, var(--neon-orange), var(--neon-green));
+  background-image: linear-gradient(to right, var(--theme-color-left), var(--theme-color-right));
   color: #333;
 
   a {
@@ -89,6 +58,6 @@ main {
   }
 
   a:hover {
-    color: var(--neon-green) !important;
+    color: var(--link-color) !important;
   }
 }
