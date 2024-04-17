@@ -1,5 +1,6 @@
 
-div
-  span.mr-2= fa_icon('check')
+.flex
+  span.mr-2= fa_icon('check', class: 'text-green')
   span.mr-2= showtime.theater.name.split.first
-  span= render showtime
+  span.mr-1= showtime.start_datetime.strftime('%b %d')
+  = render showtime
