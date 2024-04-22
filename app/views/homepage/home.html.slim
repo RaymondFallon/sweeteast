@@ -5,14 +5,15 @@ div
     .sm:pr-4
       = render 'articles/latest', article: @articles.first
       = render 'articles/recent', article: @articles.second
-      = render('articles/recent', article: @articles.third) if @articles.third
-      .ml-6
-        - @articles[3..].each do |article|
-          = link_to article.title, article_path(article)
-          span.ml-2 by #{article.author.name}
-          br
-        - if Article.count > 8
-          .my-4= link_to 'More Articles...', articles_path
+      - if @articles.third
+        = render('articles/recent', article: @articles.third)
+        .ml-6
+          - @articles[3..].each do |article|
+            = link_to article.title, article_path(article)
+            span.ml-2 by #{article.author.name}
+            br
+          - if Article.count > 8
+            .my-4= link_to 'More Articles...', articles_path
   .align-top.sm:w-1/2.inline-block
     h2.mb-1.-mt-2 Now Playing in NJ
     - @movies_today.each do |movie|
