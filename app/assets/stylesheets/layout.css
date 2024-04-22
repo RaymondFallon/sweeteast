@@ -21,6 +21,7 @@ body {
 
   a:hover {
     color: var(--link-color-dark) !important;
+    text-decoration: underline;
   }
 
   a:visited {
