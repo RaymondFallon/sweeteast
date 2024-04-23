@@ -15,16 +15,18 @@ div
           - if Article.count > 8
             .my-4= link_to 'More Articles...', articles_path
   .align-top.sm:w-1/2.inline-block
-    - if @movies_spotlighted.any?
-      h2.mb-1.-mt-2 Spotlight On
-      - @movies_spotlighted.each do |movie|
+    .-mt-2
+      - if @movies_spotlighted.any?
+        .mb-2
+          h2.mb-1 Spotlight On
+          - @movies_spotlighted.each do |movie|
+            = link_to movie.title, movie_path(movie)
+            br
+      h2.my-1 Now Playing in NJ
+      - @movies_today.each do |movie|
         = link_to movie.title, movie_path(movie)
         br
-    h2.mt-2.mb-1 Now Playing in NJ
-    - @movies_today.each do |movie|
-      = link_to movie.title, movie_path(movie)
-      br
-    h2.my-1 Later this week
-    - @movies_later.each do |movie|
-      = link_to movie.title, movie_path(movie)
-      br
+      h2.my-1 Later this week
+      - @movies_later.each do |movie|
+        = link_to movie.title, movie_path(movie)
+        br
