@@ -4,7 +4,7 @@
   - if user_signed_in?
     = link_to 'Edit', edit_movie_path(@movie)
 
-h2.sr-only
+.px-4= @movie.description
 
 ul.pl-4
   - @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|

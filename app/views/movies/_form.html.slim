@@ -9,6 +9,13 @@
   .field
     = form.label :title, class: 'mr-2'
     = form.text_field :title
+  .field
+    = form.label :spotlighted, 'Spotlight?', class: 'mr-2'
+    = form.check_box :spotlighted
+  .field
+    = form.label :description, class: 'mr-2'
+    .bg-grey-lighter.p-1.rounded.text-black
+      = form.rich_text_area :description
   .mt-1= form.fields_for :aliases, MovieAlias.new(movie: movie) do |alias_form|
     .field
       = alias_form.label :text, 'New Alias', class: 'mr-2'

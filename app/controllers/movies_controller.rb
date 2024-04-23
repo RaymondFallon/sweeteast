@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @showtimes_by_movie = Showtime.upcoming.includes(:movie, :theater).group_by(&:movie)
+    @movies = Movie.all
   end
 
   def show
@@ -46,6 +46,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, aliases_attributes: %i[id text _destroy])
+    params.require(:movie).permit(:title, :spotlighted, :description,
+                                  aliases_attributes: %i[id text _destroy])
   end
 end

@@ -4,6 +4,8 @@ class Movie < ApplicationRecord
   has_many :aliases, class_name: 'MovieAlias', dependent: :destroy
   has_many :showtimes, dependent: :destroy
 
+  has_rich_text :description
+
   validates :title,
             presence: true
 
