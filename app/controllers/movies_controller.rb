@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @showtimes = @movie.showtimes.upcoming.includes(:theater)
+    @showtimes = @movie.showtimes.includes(:theater).order(:start_datetime).upcoming
   end
 
   def new
