@@ -10,6 +10,7 @@ namespace :showtimes do
     Scrapers::CinemaHosting.new(Theater.find_by(code: 'smodcastle')).run
     Scrapers::Williams.new.run
     Scrapers::Clairidge.new.run
+    Scrapers::Acme.new.run
 
     # Run last since it's most likely to fail (with a 429). Better still would be to handle the 429 gracefully.
     Scrapers::Barrymore.new.run
@@ -19,8 +20,8 @@ namespace :showtimes do
   task test_scrape: %i[environment] do
     return unless Rails.env.development?
 
-    # theater = Theater.find_by(code: 'delsea')
-    # theater.showtimes.scraped.delete_all
-    # Scrapers::Delsea.new.run
+    theater = Theater.find_by(code: 'acme')
+    theater.showtimes.scraped.delete_all
+    Scrapers::Acme.new.run
   end
 end

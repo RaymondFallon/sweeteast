@@ -8,8 +8,7 @@
       data-theater-showtimes-target="button"] Hide
   .showtimes
     - showtimes.group_by(&:movie).sort_by{ _1.first.title }.each do |movie, showtimes|
-      .m-0
-        = link_to movie.title, movie
-      p.pl-2.m-0
+      = link_to movie.title, movie
+      .flex.pl-2.mb-2
         - showtimes.sort_by(&:start_datetime).each do |showtime|
           .mx-1= render showtime

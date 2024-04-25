@@ -1,7 +1,10 @@
 
 ## Theaters
 
-[['pgt', 'Princeton Garden Theatre', 'https://www.princetongardentheatre.org/',
+[
+ ['acme', 'Acme Screening Room', 'https://acmescreeningroom.org/',
+          '25 S Union St, Lambertville, NJ 08530', '08530'],
+ ['pgt', 'Princeton Garden Theatre', 'https://www.princetongardentheatre.org/',
          '160 Nassau St, Princeton, NJ 08542', '08542'],
  ['delsea', 'Delsea Drive-In', 'https://www.delseadrive-in.com/',
             '2203 S Delsea Dr, Vineland, NJ 08360', '08360'],
