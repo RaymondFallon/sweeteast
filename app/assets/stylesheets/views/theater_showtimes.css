@@ -30,6 +30,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
 
   padding: 0.25em;
   border-radius: 3px;

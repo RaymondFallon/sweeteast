@@ -12,11 +12,11 @@
     - @showtimes_by_date.each do |date, _showtimes|
       - if date == @selected_date
         .showtime-date-link.for-today
-          .text-sm= date.strftime("%a, %b")
+          .text-xs= date.strftime("%a, %b")
           .text-xl= date.strftime("%e")
       - else
         = link_to movie_path(@movie, date: date), class: 'showtime-date-link' do
-          .text-sm= date.strftime("%a, %b")
+          .text-xs= date.strftime("%a, %b")
           .text-xl= date.strftime("%e")
 
   .flex.flex-col
