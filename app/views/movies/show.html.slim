@@ -19,14 +19,11 @@
           .text-sm= date.strftime("%a, %b")
           .text-xl= date.strftime("%e")
 
-  ul.pl-0
-    - @showtimes_by_date.each_with_index do |(date, showtimes), idx|
-      - next unless date == @selected_date
-      .flex.flex-col
-        h2= date.strftime("%A, %B %e")
-        - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
-          .mb-0
-            = link_to theater.name, theater.external_url, target: '_blank'
-          .flex.flex-wrap
-            - showtimes.sort_by(&:start_datetime).each do |showtime|
-              .mx-1= render showtime
+  .flex.flex-col
+    h2.mt-4.mb-0= @selected_date.strftime("%A, %B %e")
+    - @showtimes_by_date[@selected_date].sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+      .mt-2.mb-0
+        = link_to theater.name, theater.external_url, target: '_blank'
+      .flex.flex-wrap
+        - showtimes.sort_by(&:start_datetime).each do |showtime|
+          .mx-1= render showtime
