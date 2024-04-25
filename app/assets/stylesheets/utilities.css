@@ -23,6 +23,10 @@
   white-space: nowrap;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 /*
 .inline-block {
   display: inline-block !important;

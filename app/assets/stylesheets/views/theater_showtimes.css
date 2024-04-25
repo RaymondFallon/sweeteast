@@ -24,3 +24,23 @@
 .theater-showtimes.hidden-by-user .theater-name:hover {
   color: rgb(80, 179, 80);
 }
+
+.showtime-date-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.25em;
+  border-radius: 3px;
+
+  min-height: 3em;
+  min-width: 3em;
+
+  border: 1px solid blue;
+}
+
+.showtime-date-link.for-today, .showtime-date-link.for-today:hover {
+  background-color: blue;
+  color: white !important;
+}

@@ -4,12 +4,19 @@
   - if user_signed_in?
     = link_to 'Edit', edit_movie_path(@movie)
 
-.px-4= @movie.description
+- if @movie.description.present?
+  .mb-4= @movie.description
 
-ul.pl-4
-  - @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|
-    - if idx != 0
-        hr.my-12
+.flex.align-items-center.gap-2.overflow-x-auto
+  - @showtimes_by_date.each do |date, _showtimes|
+    - is_today = (date == @selected_date)
+    = link_to movie_path(@movie, date: date), class: "showtime-date-link #{'for-today' if is_today}" do
+      .text-sm= date.strftime("%a, %b")
+      .text-xl= date.strftime("%e")
+
+ul.pl-0
+  - @showtimes_by_date.each_with_index do |(date, showtimes), idx|
+    - next unless date == @selected_date
     .flex.flex-col
       h2= date.strftime("%A, %B %e")
       - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
