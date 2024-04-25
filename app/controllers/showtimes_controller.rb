@@ -2,9 +2,11 @@ class ShowtimesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @showtimes = Showtime.order(:start_datetime)
-                         .includes(:movie, :theater)
-                         .upcoming
+    @showtimes_by_date = Showtime.order(:start_datetime)
+                                 .includes(:movie, :theater)
+                                 .upcoming
+                                 .group_by(&:date)
+    @selected_date = params[:date] ? Date.parse(params[:date]) : @showtimes_by_date.keys.first
   end
 
   def create

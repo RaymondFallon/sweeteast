@@ -1,12 +1,15 @@
 .theater-showtimes[data-controller='theater-showtimes' data-theater-showtimes-code-value=theater.code]
-  .flex.items-baseline.justify-between
+  .flex.items-center
     div
       = link_to theater.name, theater.external_url, target: '_blank', class: 'text-2xl theater-name'
-    a[href="#"
-      data-turbo="false"
-      data-action="theater-showtimes#toggle"
-      data-theater-showtimes-target="button"] Hide
-  .showtimes
+    .ml-4.text-sm
+      = '['
+      a[href="#"
+        data-turbo="false"
+        data-action="theater-showtimes#toggle"
+        data-theater-showtimes-target="button"] Hide
+      = ']'
+  .showtimes.pl-2.md:pl-8
     - showtimes.group_by(&:movie).sort_by{ _1.first.title }.each do |movie, showtimes|
       = link_to movie.title, movie
       .flex.pl-2.mb-2

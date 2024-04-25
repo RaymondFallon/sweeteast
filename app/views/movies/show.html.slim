@@ -7,7 +7,7 @@
 - if @movie.description.present?
   .mb-4= @movie.description
 
-= turbo_frame_tag(@movie, 'movie_showtimes') do
+= turbo_frame_tag(@movie, 'movie_showtimes', data: { turbo_action: 'replace' }) do
   .flex.align-items-center.gap-2.overflow-x-auto
     - @showtimes_by_date.each do |date, _showtimes|
       - if date == @selected_date

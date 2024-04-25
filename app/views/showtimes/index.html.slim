@@ -1,9 +1,18 @@
 h1.mt-0 Showtimes
 
-- @showtimes.group_by { _1.start_datetime.to_date }.each_with_index do |(date, showtimes), idx|
-  - if idx != 0
-      hr.my-12
+= turbo_frame_tag('showtime_index', data: { turbo_action: 'replace' }) do
+  .flex.align-items-center.gap-2.overflow-x-auto
+    - @showtimes_by_date.each do |date, _showtimes|
+      - if date == @selected_date
+        .showtime-date-link.for-today
+          .text-sm= date.strftime("%a, %b")
+          .text-xl= date.strftime("%e")
+      - else
+        = link_to showtimes_path(date: date), class: 'showtime-date-link' do
+          .text-sm= date.strftime("%a, %b")
+          .text-xl= date.strftime("%e")
+
   .flex.flex-col
-    h2= date.strftime("%A, %B %e")
-    - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+    h2.mt-4.mb-0= @selected_date.strftime("%A, %B %e")
+    - @showtimes_by_date[@selected_date].sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
       = render 'day_at_theater', theater: theater, showtimes: showtimes
