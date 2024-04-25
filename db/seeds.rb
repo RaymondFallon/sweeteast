@@ -26,5 +26,7 @@
   Theater.where(code: code).first_or_create(name: name, external_url: url, address: address, zip_code: zip_code)
 end
 
+return if Article.count.positive?
+
 ray = Author.where(name: 'Ray Fallon').first_or_create
 Article.where(author: ray).first_or_create(title: 'Coming Soon', published_at: 1.day.ago)
