@@ -7,21 +7,26 @@
 - if @movie.description.present?
   .mb-4= @movie.description
 
-.flex.align-items-center.gap-2.overflow-x-auto
-  - @showtimes_by_date.each do |date, _showtimes|
-    - is_today = (date == @selected_date)
-    = link_to movie_path(@movie, date: date), class: "showtime-date-link #{'for-today' if is_today}" do
-      .text-sm= date.strftime("%a, %b")
-      .text-xl= date.strftime("%e")
+= turbo_frame_tag(@movie, 'movie_showtimes') do
+  .flex.align-items-center.gap-2.overflow-x-auto
+    - @showtimes_by_date.each do |date, _showtimes|
+      - if date == @selected_date
+        .showtime-date-link.for-today
+          .text-sm= date.strftime("%a, %b")
+          .text-xl= date.strftime("%e")
+      - else
+        = link_to movie_path(@movie, date: date), class: 'showtime-date-link' do
+          .text-sm= date.strftime("%a, %b")
+          .text-xl= date.strftime("%e")
 
-ul.pl-0
-  - @showtimes_by_date.each_with_index do |(date, showtimes), idx|
-    - next unless date == @selected_date
-    .flex.flex-col
-      h2= date.strftime("%A, %B %e")
-      - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
-        .mb-0
-          = link_to theater.name, theater.external_url, target: '_blank'
-        .flex.flex-wrap
-          - showtimes.sort_by(&:start_datetime).each do |showtime|
-            .mx-1= render showtime
+  ul.pl-0
+    - @showtimes_by_date.each_with_index do |(date, showtimes), idx|
+      - next unless date == @selected_date
+      .flex.flex-col
+        h2= date.strftime("%A, %B %e")
+        - showtimes.sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+          .mb-0
+            = link_to theater.name, theater.external_url, target: '_blank'
+          .flex.flex-wrap
+            - showtimes.sort_by(&:start_datetime).each do |showtime|
+              .mx-1= render showtime
