@@ -25,7 +25,7 @@ class ShowtimesController < ApplicationController
   private
 
   def selected_or_default_date
-    default = @showtimes_by_date.keys.first
+    default = Showtime.upcoming.minimum(:start_datetime)&.to_date
     selected = Date.parse(params[:date]) if params[:date]
     selected || default
   rescue Date::Error
