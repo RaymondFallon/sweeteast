@@ -1,8 +1,9 @@
 -# Partial Variables:
 -#   - article: Article
 
-.article-preview.mb-4
-  div= link_to article.title, article_path(article), class: 'text-3xl'
-  .italic= article.author.name
-  .italic.mb-4= article.published_at.strftime("%B %e, %Y")
-  div= article.preview
+- if article
+  .article-preview.mb-4
+    div= link_to article.title, article_path(article), class: 'text-3xl'
+    .italic= article.author.name
+    .italic.mb-4= article.published_at.strftime("%B %e, %Y")
+    div= article.preview
