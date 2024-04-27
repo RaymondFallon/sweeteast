@@ -6,7 +6,8 @@ class ShowtimesController < ApplicationController
                                  .includes(:movie, :theater)
                                  .upcoming
                                  .group_by(&:date)
-    @selected_date = params[:date] ? Date.parse(params[:date]) : @showtimes_by_date.keys.first
+
+    @selected_date = selected_or_default_date
   end
 
   def create
@@ -22,6 +23,14 @@ class ShowtimesController < ApplicationController
   end
 
   private
+
+  def selected_or_default_date
+    default = @showtimes_by_date.keys.first
+    selected = Date.parse(params[:date]) if params[:date]
+    selected || default
+  rescue Date::Error
+    default
+  end
 
   def showtime_params
     params.require(:showtime).permit(:movie_id, :theater_id, :start_datetime)
