@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
                                          .order(:start_datetime)
                                          .upcoming
                                          .group_by(&:date)
-    @selected_date = params[:date] ? Date.parse(params[:date]) : @showtimes_by_date.keys.first
+    @selected_date = selected_or_default_date(@showtimes_by_date.keys)
   end
 
   def new

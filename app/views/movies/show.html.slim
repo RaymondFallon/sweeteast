@@ -19,10 +19,13 @@
         .text-xl= date.strftime("%e")
 
 .flex.flex-col
-  h2.mt-4.mb-0= @selected_date.strftime("%A, %B %e")
-  - @showtimes_by_date[@selected_date].sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
-    .mt-2.mb-0
-      = link_to theater.name, theater.external_url, target: '_blank'
-    .flex.flex-wrap
-      - showtimes.sort_by(&:start_datetime).each do |showtime|
-        .mx-1= render showtime
+  - if @showtimes_by_date[@selected_date].present?
+    h2.mt-4.mb-0= @selected_date.strftime("%A, %B %e")
+    - @showtimes_by_date[@selected_date].sort_by { _1.theater.name }.group_by(&:theater).each do |theater, showtimes|
+      .mt-2.mb-0
+        = link_to theater.name, theater.external_url, target: '_blank'
+      .flex.flex-wrap
+        - showtimes.sort_by(&:start_datetime).each do |showtime|
+          .mx-1= render showtime
+  - else
+    h2.mt-4.mb-0 No showtimes available
