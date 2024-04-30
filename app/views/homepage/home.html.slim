@@ -22,7 +22,7 @@ div
           - @movies_spotlighted.each do |movie|
             = link_to movie.title, movie_path(movie)
             br
-      h2.my-1 Now Playing in NJ
+      h2.my-1 Today in NJ
       - @movies_today.each do |movie|
         = link_to movie.title, movie_path(movie)
         br
