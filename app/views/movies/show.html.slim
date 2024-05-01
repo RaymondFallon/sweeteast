@@ -5,7 +5,16 @@
     = link_to 'Edit', edit_movie_path(@movie)
 
 - if @movie.description.present?
-  .mb-4= @movie.description
+  - if short_movie_desc?(@movie)
+    .mb-4= @movie.description
+  - else
+    .mb-2(data-controller="show-more")
+      .shrunken(data-show-more-target="content")
+        = @movie.description
+      .text-center(data-show-more-target="control" style="max-width: 50em;")
+        hr.mt-0.mx-12.border-dashed
+        button.mb-4(data-action="click->show-more#showMore")
+          'Show more...
 
 .flex.align-items-center.gap-2.overflow-x-auto
   - @showtimes_by_date.each do |date, _showtimes|
