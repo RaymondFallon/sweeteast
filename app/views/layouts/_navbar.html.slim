@@ -1,4 +1,4 @@
 #navbar
   = link_to 'Garden State Lantern', root_path, class: 'text-2xl'
   - if user_signed_in?
-    = link_to 'Log out', destroy_user_session_path
+    = button_to 'Log out', destroy_user_session_path, method: :delete, class: 'text-sm btn'
