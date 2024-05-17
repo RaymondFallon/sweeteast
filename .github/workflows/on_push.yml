@@ -10,10 +10,10 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Cache Gems (per unique Lockfile) between CI runs!
       - name: Cache Gems
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
@@ -21,7 +21,7 @@ jobs:
             ${{ runner.os }}-bundle-
       # Cache Coverage Reports to Allow Checking of Coverage Loss
       - name: Cache SimpleCov Coverage
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: coverage
           key: coverage
