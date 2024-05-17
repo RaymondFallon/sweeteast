@@ -9,9 +9,9 @@
     .mb-4= @movie.description
   - else
     .mb-2(data-controller="show-more")
-      .shrunken(data-show-more-target="content")
+      div(data-show-more-target="content")
         = @movie.description
-      .text-center(data-show-more-target="control" style="max-width: 50em;")
+      .text-center.hidden(data-show-more-target="control" style="max-width: 50em;")
         hr.mt-0.mx-12.border-dashed
         button.mb-4(data-action="click->show-more#showMore")
           'Show more...
