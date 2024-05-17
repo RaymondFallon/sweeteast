@@ -10,8 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      env:
+        CI_TEST: true
+      # with:
+      #   bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: RSPEC tests
       run: |

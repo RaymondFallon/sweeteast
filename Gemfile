@@ -36,5 +36,10 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'sqlite3'
+end
+
+if ENV.fetch("CI_TEST", false)
+  group :test do
+    gem 'sqlite3'
+  end
 end
