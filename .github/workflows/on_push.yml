@@ -6,35 +6,18 @@ jobs:
   ci-testing:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
-    # Container job steps
     steps:
-      # Checkout the repository
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Cache Gems (per unique Lockfile) between CI runs!
-      - name: Cache Gems
-        uses: actions/cache@v4
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-bundle-
-      # Cache Coverage Reports to Allow Checking of Coverage Loss
-      - name: Cache SimpleCov Coverage
-        uses: actions/cache@v4
-        with:
-          path: coverage
-          key: coverage
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - run: bundle exec rspec
 
-      - name: Bundle Install
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Yarn Install
-        run: yarn install
-      - name: Bundle Audit
-        run: bundle exec bundle audit check --update
-      - name: Run Rubocop
-        run: bundle exec rubocop app/
-      - name: Run Brakeman
-        run: bundle exec brakeman -w1 -z
+    - name: Yarn Install
+      run: yarn install
+    - name: Bundle Audit
+      run: bundle exec bundle audit check --update
+    - name: Run Rubocop
+      run: bundle exec rubocop app/
+    - name: Run Brakeman
+      run: bundle exec brakeman -w1 -z
