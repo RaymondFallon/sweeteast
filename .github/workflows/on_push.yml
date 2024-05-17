@@ -12,8 +12,8 @@ jobs:
     - uses: ruby/setup-ruby@v1
       env:
         CI_TEST: true
-      # with:
-      #   bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: RSPEC tests
       run: |
