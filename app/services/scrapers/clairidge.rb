@@ -8,11 +8,11 @@ module Scrapers
 
     def scrape_showtimes
       fetch_html(url).css('.event_days .event_days_inner a').each do |date_link|
-        date_str = date_link.text.tr("\n\t", ' ').strip # "Tue          April          09"
+        date_str = date_link.text.squish
         html_for_day = fetch_html(@url + date_link.attribute('href').value)
 
         html_for_day.css('.events_list .events_list_data').each do |showtime_node|
-          title = showtime_node.css('h3').text.tr("\n\t", ' ').strip
+          title = showtime_node.css('h3').text.squish
           times = showtime_node.css('.events_list_times .events_list_times_box').map { _1.text.strip }
 
           create_records_for_times(title, date_str, times)

@@ -1,0 +1,26 @@
+name: Rspec Testing
+on: [push,pull_request]
+
+jobs:
+  # Label of the container job
+  ci-testing:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Container job steps
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Set up Ruby
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      # Run Rspec
+      - name: Run Rspec
+        run: bundle exec rspec
