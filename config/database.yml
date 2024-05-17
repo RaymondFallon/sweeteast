@@ -9,13 +9,9 @@ development:
 
 test:
   <<: *default
-  <% if ENV["CI_TEST"] %>
-  database: postgres
-  user: postgres
-  host: postgres
-  password: postgres
-  <% else %>
   database: sweeteast_test
+  <% if ENV["CI_TEST"] %>
+  adapter: sqlite3
   <% end %>
 
 production:
