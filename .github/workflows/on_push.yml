@@ -28,8 +28,7 @@ jobs:
 
       - name: Bundle Install
         run: |
-          gem install bundler
-          bundle config --local path vendor/bundle
+          bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
       - name: Yarn Install
         run: yarn install
