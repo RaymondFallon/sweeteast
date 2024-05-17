@@ -1,16 +1,23 @@
-development:
+default: &default
   adapter: postgresql
-  database: sweeteast_dev
-  pool: 5
-  timeout: 5000
-test:
-  adapter: postgresql
-  database: sweeteast_test
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+development:
+  <<: *default
+  database: sweeteast_dev
+
+test:
+  <<: *default
+  <% if ENV["CI_TEST"] %>
+  database: postgres
+  user: postgres
+  host: postgres
+  password: postgres
+  <% else %>
+  database: sweeteast_test
+  <% end %>
+
 production:
-  adapter: postgresql
+  <<: *default
   database: sweeteast_prod
-  pool: 5
-  timeout: 5000

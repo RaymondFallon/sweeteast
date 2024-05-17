@@ -16,7 +16,7 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_HOST: sweeteast_test
+          POSTGRES_HOST: postgres
           POSTGRES_USER: postgres
           POSTGRES_PORT: 5432
         # Set health checks to wait until postgres has started
@@ -31,7 +31,12 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - run: bundle exec rspec
+    - name: RSPEC tests
+      run: |
+        RAILS_ENV=test bundle exec rake db:setup
+        RAILS_ENV=test bundle exec rspec
+      env:
+        CI_TEST: true
 
     - name: Yarn Install
       run: yarn install
