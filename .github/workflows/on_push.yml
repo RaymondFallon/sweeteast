@@ -10,17 +10,32 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout
-        uses: actions/checkout@v2
-      # Set up Ruby
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: actions/checkout@v3
+      # Cache Gems (per unique Lockfile) between CI runs!
+      - name: Cache Gems
+        uses: actions/cache@v3
         with:
-          ruby-version: 3.1
-      # Install dependencies
-      - name: Install dependencies
+          path: vendor/bundle
+          key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bundle-
+      # Cache Coverage Reports to Allow Checking of Coverage Loss
+      - name: Cache SimpleCov Coverage
+        uses: actions/cache@v3
+        with:
+          path: coverage
+          key: coverage
+
+      - name: Bundle Install
         run: |
           gem install bundler
-          bundle install
-      # Run Rspec
-      - name: Run Rspec
-        run: bundle exec rspec
+          bundle config --local path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Yarn Install
+        run: yarn install
+      - name: Bundle Audit
+        run: bundle exec bundle audit check --update
+      - name: Run Rubocop
+        run: bundle exec rubocop app/
+      - name: Run Brakeman
+        run: bundle exec brakeman -w1 -z
