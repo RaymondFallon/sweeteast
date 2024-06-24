@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.5"
 
 gem 'devise'
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.1.0"
 gem "font-awesome-rails"
 gem "sprockets-rails"
 gem "pg"
-gem "puma", "~> 5.0"
+gem "puma"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
