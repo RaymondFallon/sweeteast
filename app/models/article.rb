@@ -8,7 +8,7 @@ class Article < ApplicationRecord
   validates :title, :published_at,
             presence: true
 
-  scope :published, -> { where('published_at <= ?', Time.zone.today.end_of_day) }
+  scope :published, -> { where(published_at: ..Time.zone.today.end_of_day) }
 
   def preview
     preview_text ||

@@ -21,6 +21,10 @@ class MoviesController < ApplicationController
     @movie.aliases.build
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
@@ -30,10 +34,6 @@ class MoviesController < ApplicationController
       flash.now[:error] = 'Error'
       render :new
     end
-  end
-
-  def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update

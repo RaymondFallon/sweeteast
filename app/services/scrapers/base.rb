@@ -8,11 +8,11 @@ module Scrapers
     attr_reader :theater, :url
 
     def run
-      p "Scraping showtimes for #{theater.name}..."
+      Rails.logger.debug { "Scraping showtimes for #{theater.name}..." }
       scrape_showtimes
-      p "Finished scraping showtimes for #{theater.name}."
+      Rails.logger.debug { "Finished scraping showtimes for #{theater.name}." }
     rescue StandardError => e
-      p "Error scraping showtimes for #{theater.name}: #{e.message}"
+      Rails.logger.debug { "Error scraping showtimes for #{theater.name}: #{e.message}" }
     end
 
     def scrape_showtimes

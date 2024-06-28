@@ -5,7 +5,7 @@ class MovieAlias < ApplicationRecord
 
   validates :text,
             presence: true
-  validates_uniqueness_of :text
+  validates :text, uniqueness: true
 
   before_validation :find_or_create_movie, on: :create
 
