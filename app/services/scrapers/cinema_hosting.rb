@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Scrapers
   # shared code for scraping showtimes from a cinema hosting website (Smodcastle, Montgomery, etc.)
@@ -10,7 +11,7 @@ module Scrapers
     def scrape_showtimes
       fetch_html(url).css('.dateslider ul.slides li a').each do |date_link|
         date_path = date_link.attribute('href').value
-        date_str = date_link.css('span.month').text + ' ' + date_link.css('span.date').text
+        date_str = "#{date_link.css('span.month').text} #{date_link.css('span.date').text}"
 
         html_for_day = fetch_html(URI.join(url, date_path).to_s)
 

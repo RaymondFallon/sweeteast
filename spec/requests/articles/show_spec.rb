@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe 'GET /articles/:id' do
-
   it 'displays the article if it\'s published' do
     article = create(:article, :published, title: 'Men is a Mess')
     get article_path(article)

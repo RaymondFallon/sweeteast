@@ -6,7 +6,7 @@ class Showtime < ApplicationRecord
 
   validates :start_datetime,
             presence: true
-  validates_uniqueness_of :start_datetime, scope: [:movie, :theater_id]
+  validates_uniqueness_of :start_datetime, scope: %i[movie theater_id]
 
   scope :for_date, ->(date) { where(start_datetime: date.beginning_of_day..date.end_of_day) }
   scope :scraped, -> { where(manually_added: false) }
@@ -30,4 +30,3 @@ class Showtime < ApplicationRecord
     start_datetime.strftime('%l:%M %P')
   end
 end
-

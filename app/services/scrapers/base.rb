@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'open-uri'
 
@@ -9,13 +11,12 @@ module Scrapers
       p "Scraping showtimes for #{theater.name}..."
       scrape_showtimes
       p "Finished scraping showtimes for #{theater.name}."
-
     rescue StandardError => e
       p "Error scraping showtimes for #{theater.name}: #{e.message}"
     end
 
     def scrape_showtimes
-      raise NotImplementedError, "Subclasses must implement scrape_showtimes method"
+      raise NotImplementedError, 'Subclasses must implement scrape_showtimes method'
     end
 
     private

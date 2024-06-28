@@ -17,7 +17,7 @@ describe 'POST /movies' do
     before { sign_in(create(:user)) }
 
     it 'creates a movie' do
-      expect{post movies_path, params: params}.to change(Movie, :count).by(1)
+      expect { post movies_path, params: params }.to change(Movie, :count).by(1)
       expect(response).to redirect_to(movie_path(Movie.last))
     end
   end

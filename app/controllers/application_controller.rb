@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   def selected_or_default_date(dates)
     default = dates.first || Time.zone.today

@@ -1,7 +1,7 @@
+# frozen_string_literal: true
 
 # Merges two movies into one, and combines their Showtimes and MovieAliases.
 class MovieMerger
-
   attr_reader :movie1
 
   def initialize(movie1_id, movie2_id)

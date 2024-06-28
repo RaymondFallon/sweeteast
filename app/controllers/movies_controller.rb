@@ -24,10 +24,10 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      flash[:notice] = "Success"
+      flash[:notice] = 'Success'
       redirect_to movie_path(@movie)
     else
-      flash.now[:error] = "Error"
+      flash.now[:error] = 'Error'
       render :new
     end
   end
@@ -39,10 +39,10 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      flash[:notice] = "Success"
+      flash[:notice] = 'Success'
       redirect_to movie_path(@movie)
     else
-      flash.now[:error] = "Error"
+      flash.now[:error] = 'Error'
       render :edit
     end
   end

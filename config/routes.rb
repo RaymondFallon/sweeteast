@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
-  root "homepage#home"
-  get "about", to: "homepage#about"
+  root 'homepage#home'
+  get 'about', to: 'homepage#about'
 
   resources :articles, except: %i[destroy]
   resources :authors, except: %i[destroy]

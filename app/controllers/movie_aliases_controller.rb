@@ -6,9 +6,9 @@ class MovieAliasesController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     if @movie.aliases.create(movie_alias_params)
-      flash[:notice] = "Alias added successfully"
+      flash[:notice] = 'Alias added successfully'
     else
-      flash[:error] = "Error adding alias"
+      flash[:error] = 'Error adding alias'
     end
 
     redirect_to edit_movie_path(@movie)
@@ -17,9 +17,9 @@ class MovieAliasesController < ApplicationController
   def destroy
     @movie_alias = MovieAlias.find(params[:id])
     if @movie_alias.destroy
-      flash[:notice] = "Alias removed successfully"
+      flash[:notice] = 'Alias removed successfully'
     else
-      flash[:error] = "Error removing alias"
+      flash[:error] = 'Error removing alias'
     end
 
     redirect_to edit_movie_path(@movie_alias.movie)
