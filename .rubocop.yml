@@ -1,142 +1,35 @@
 
-# require:
-# - rubocop-rake
-# - rubocop-rspec
-# - rubocop-rails
-# - rubocop-performance
+AllCops:
+  NewCops: disable
+  Exclude:
+    - bin/**/*
+    - db/**/*
 
-# AllCops:
-#   TargetRubyVersion: 3.1
-#   NewCops: enable
-#   Include:
-#     - Rakefile
-#     - config.ru
-#   Exclude:
-#     - bin/**/*
-#     - Capfile
-#     - config/**/*
-#     - config/initializers/devise.rb
-#     - coverage/**/*
-#     - doc/**/*
-#     - Gemfile
-#     - lib/capistrano/tasks/deploy.rake
-#     - lib/templates/**/*
-#     - log/**/*
-#     - public/**/*
-#     - templates/**/*
-#     - tmp/**/*
-#     - vendor/**/*
+Layout:
+  Exclude:
+    - db/seeds.rb
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Lint/MissingSuper:
+  Exclude:
+    - app/services/scrapers/*
 
-# Layout:
-#   Exclude:
-#     - db/seeds.rb
-# Layout/HashAlignment:
-#   Enabled: false
-# Layout/LineLength:
-#   Max: 135
-#   AllowURI: true # Allow lines containing URIs to exceed max
-#   URISchemes:
-#     - http
-#     - https
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
-# Lint/MissingSuper:
-#   Exclude:
-#     - app/components/**/*
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/*
+    - config/initializers/*
+    - app/services/scrapers/*
+Metrics/AbcSize:
+  Exclude:
+    - app/services/scrapers/*
+Metrics/MethodLength:
+  Exclude:
+    - app/services/scrapers/*
 
-# Metrics:
-#   Exclude:
-#     - db/**/*
-# Metrics/BlockLength:
-#   Exclude:
-#     - spec/factories/**/*.rb
-#   CountAsOne: ['array', 'hash', 'heredoc']
-# Metrics/MethodLength:
-#   Max: 16
-#   CountAsOne: ['array', 'hash', 'heredoc']
-
-# Naming/AccessorMethodName:
-#   Enabled: false
-# Naming/MethodParameterName:
-#   Enabled: false
-# Naming/VariableNumber:
-#   Enabled: false
-
-# Rails/I18nLocaleTexts:
-#   Enabled: false
-# Rails/LexicallyScopedActionFilter:
-#   Enabled: false
-# Rails/SquishedSQLHeredocs:
-#   Enabled: false
-# Rails/FindEach:
-#   Enabled: False
-
-# RSpec/AnyInstance:
-#   Enabled: false
-# RSpec/ContextWording:
-#   Prefixes:
-#     - for
-#     - 'on'
-#     - using
-#     - when
-#     - with
-#     - without
-# RSpec/DescribeClass:
-#   Enabled: false
-# RSpec/ExampleLength:
-#   Enabled: false
-# RSpec/ExpectChange:
-#   Enabled: false
-# RSpec/ImplicitExpect:
-#   Enabled: false
-# RSpec/ImplicitSubject:
-#   Enabled: false
-# RSpec/MultipleExpectations:
-#   Enabled: false
-# RSpec/MultipleMemoizedHelpers:
-#   Max: 15
-# RSpec/NamedSubject:
-#   Enabled: false
-# RSpec/NestedGroups:
-#   Enabled: false
-# RSpec/NoExpectationExample:
-#   Enabled: false
-# RSpec/NotToNot:
-#   Enabled: false
-# RSpec/RepeatedExample:
-#   Enabled: false
-
-# Style/ClassVars:
-#   Exclude:
-#     - app/components/**/*_component.rb
-# Style/CommentAnnotation:
-#   Enabled: false
-# Style/GuardClause:
-#   Exclude:
-#     - db/**/*
-# Style/HashSyntax:
-#   Enabled: false
-# Style/NumericLiterals:
-#   Exclude:
-#     - db/**/*
-# Style/NumericPredicate:
-#   Enabled: false
-# Style/SignalException:
-#   EnforcedStyle: semantic
-# Style/SingleLineMethods:
-#   Enabled: false
-# Style/SymbolArray:
-#   Exclude:
-#     - db/**/*
-#   MinSize: 3
-# Style/SymbolProc:
-#   AllowMethodsWithArguments: true
-#   Exclude:
-#     - db/**/*
-# Style/WordArray:
-#   Exclude:
-#     - db/seeds.rb
-#   MinSize: 3
-
+Style:
+  Exclude:
+    - db/seeds.rb
 Style/HashSyntax:
+  Enabled: false
+Style/Documentation:
   Enabled: false

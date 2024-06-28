@@ -21,9 +21,11 @@ module Scrapers
 
     private
 
+    # rubocop:disable Security/Open
     def fetch_html(url)
       Nokogiri::HTML(URI.open(url))
     end
+    # rubocop:enable Security/Open
 
     def create_records_for_times(title, date, times)
       times.each do |time|

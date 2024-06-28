@@ -8,9 +8,9 @@ module Scrapers
     end
 
     def scrape_showtimes
-      fetch_html(url).css('#box-times').each do |showtime_node|
-        raw_title = showtime_node.css('a.title').text
-        movie_path = showtime_node.css('a.title').attribute('href').value
+      fetch_html(url).css('#box-times').each do |boxtimes_node|
+        raw_title = boxtimes_node.css('a.title').text
+        movie_path = boxtimes_node.css('a.title').attribute('href').value
         movie_url = URI.join(url, movie_path).to_s
 
         movie_html = fetch_html(movie_url)
