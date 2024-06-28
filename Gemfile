@@ -37,5 +37,5 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 2.0'
 end
