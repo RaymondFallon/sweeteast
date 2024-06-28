@@ -16,16 +16,15 @@ module Scrapers
         title_nodes = html_for_day.css('#now-playing div.show')
         time_nodes = html_for_day.css('#now-playing ol.showtimes')
 
-        if title_nodes.size != time_nodes.size
-          Rails.logger.info "title_nodes count != time_nodes count for #{date}"
-          next
-        else
+        if title_nodes.size == time_nodes.size
           (0...title_nodes.size).each do |idx|
             raw_title = title_nodes[idx].css('a h2').text
             times = time_nodes[idx].css('li a').map(&:text)
 
             create_records_for_times(raw_title, date, times)
           end
+        else
+          Rails.logger.info "title_nodes count != time_nodes count for #{date}"
         end
       end
 

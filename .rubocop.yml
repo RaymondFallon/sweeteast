@@ -1,6 +1,6 @@
 
 AllCops:
-  NewCops: disable
+  NewCops: enable
   Exclude:
     - bin/**/*
     - db/**/*
