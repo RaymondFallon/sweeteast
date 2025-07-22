@@ -20,8 +20,8 @@ namespace :showtimes do
   task test_scrape: %i[environment] do
     return unless Rails.env.development?
 
-    theater = Theater.find_by(code: 'clairidge')
+    theater = Theater.find_by(code: 'barrymore')
     theater.showtimes.scraped.delete_all
-    Scrapers::Clairidge.new.run
+    Scrapers::Barrymore.new.run
   end
 end

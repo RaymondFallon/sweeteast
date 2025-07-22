@@ -10,7 +10,7 @@
             '2203 S Delsea Dr, Vineland, NJ 08360', '08360'],
  ['smodcastle', 'Smodcastle Cinemas', 'https://www.smodcastlecinemas.com/',
                 '123 Main St, Red Bank, NJ 07701', '07701'],
- ['barrymore', 'Barrymore Film Center', 'https://www.barrymorefilmcenter.com/',
+ ['barrymore', 'Barrymore Film Center', 'https://barrymorefilmcenter.com/',
                '209 Monmouth St, Red Bank, NJ 07701', '07701'],
  ['clairidge', 'Clairidge', 'https://theclairidge.org/',
                '486 Bloomfield Ave, Montclair, NJ 07042', '07042'],
