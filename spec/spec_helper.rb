@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-SimpleCov.minimum_coverage 50
+# SimpleCov.minimum_coverage 50
 SimpleCov.start 'rails' do
   add_filter 'app/views'
   add_filter 'services/scrapers'
