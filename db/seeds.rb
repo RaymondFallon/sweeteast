@@ -12,7 +12,7 @@
                 '123 Main St, Red Bank, NJ 07701', '07701'],
  ['barrymore', 'Barrymore Film Center', 'https://barrymorefilmcenter.com/',
                '209 Monmouth St, Red Bank, NJ 07701', '07701'],
- ['clairidge', 'Clairidge', 'https://theclairidge.org/',
+ ['clairidge', 'Clairidge', 'https://https://montclairfilm.org/',
                '486 Bloomfield Ave, Montclair, NJ 07042', '07042'],
  ['showroom', 'Showroom Cinemas', 'https://showroomcinemas.com/',
               '707 Cookman Ave, Asbury Park, NJ 07712', '07712'],

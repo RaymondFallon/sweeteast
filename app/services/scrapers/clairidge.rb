@@ -4,7 +4,7 @@ module Scrapers
   class Clairidge < Base
     def initialize
       @theater = Theater.find_by(code: 'clairidge')
-      @url = 'https://theclairidge.org/all-event/'
+      @url = 'https://montclairfilm.org/all-event/'
     end
 
     def scrape_showtimes
