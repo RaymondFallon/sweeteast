@@ -21,7 +21,7 @@ module Scrapers
           times = showtime_node.css('.session-times li a').map { _1.text.strip }
           times.each do |time|
             start_datetime = parse_start_datetime(date, time)
-            Showtime.create!(theater: theater, raw_title: raw_title, start_datetime: start_datetime)
+            Showtime.create!(theater: theater, raw_title: raw_title.strip, start_datetime: start_datetime)
           end
         end
 
